@@ -1278,6 +1278,8 @@ void Compiler::eeSetEHinfo(unsigned EHnumber, const CORINFO_EH_CLAUSE* clause)
 
 CorInfoReloc Compiler::eeGetRelocTypeHint(void* target)
 {
+    if (RunningSuperPmiReplay()) { return CorInfoReloc::RELATIVE32; }
+
     if (info.compMatchedVM)
     {
         return info.compCompHnd->getRelocTypeHint(target);

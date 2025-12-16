@@ -5125,6 +5125,7 @@ unsigned emitter::get_curTotalCodeSize()
 //    A struct containing the current instruction execution characteristics
 bool emitter::IsAddressInRange(void* addr)
 {
+    if (emitComp->RunningSuperPmiReplay()) { return true; }
     return emitComp->opts.compReloc || (INDEBUG(emitComp->opts.compEnablePCRelAddr&&)(
                                            CorInfoReloc::RELATIVE32 == emitComp->eeGetRelocTypeHint(addr)));
 }

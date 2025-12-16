@@ -5171,7 +5171,7 @@ unsigned Compiler::gtSetEvalOrder(GenTree* tree)
                 ssize_t              imm            = static_cast<ssize_t>(con->LngValue());
                 emitAttr             size           = EA_SIZE(emitActualTypeSize(tree));
 
-                if (iconNeedsReloc || addrNeedsReloc)
+                if (iconNeedsReloc /*|| addrNeedsReloc*/)
                 {
                     // auipc + addi
                     costSz = 8;
