@@ -1803,6 +1803,11 @@ bool CSE_HeuristicCommon::CanConsiderTree(GenTree* tree, bool isReturn)
         {
             return false;
         }
+
+        if (tree->AsIntCon()->AddrNeedsReloc(m_pCompiler))
+        {
+            return false;
+        }
 #endif
     }
 
